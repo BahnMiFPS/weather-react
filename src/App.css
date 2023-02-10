@@ -1,38 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap");
+
+:root {
+	font-family: "Overpass", sans-serif;
+	border-style: none;
+}
+
 .App {
-  text-align: center;
+	text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App {
+	background-color: #282c34;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card {
+	width: 500px;
+	height: 300px;
+	background-color: #353b4e;
+	border-radius: 30px;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+	justify-content: space-around;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.info {
+	display: flex;
+	flex-wrap: row nowrap;
+	justify-content: space-between;
+	align-items: baseline;
 }
 
-.App-link {
-  color: #61dafb;
+.title {
+	color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.title input {
+	all: unset;
+	text-align: left;
+	color: #61dafb;
+	font-weight: 700;
+	font-size: 2rem;
+}
+
+.title input::placeholder {
+	color: #61dafbac;
+}
+
+.title button {
+	all: unset;
+	color: black;
+	background: #61dafb;
+	border-radius: 5px;
+	padding: 0.5rem 0.8rem;
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.title button:hover {
+	cursor: pointer;
+	background: #76defb;
+}
+
+.error {
+	color: #fb7676;
 }
