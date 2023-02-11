@@ -13,7 +13,6 @@ function App() {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		setCityName(e.target[0].value)
-		console.log(data)
 	}
 
 	useEffect(() => {
@@ -37,7 +36,6 @@ function App() {
 			setLoading(false)
 		}
 		fetchData()
-		console.log(data)
 	}, [cityName])
 
 	return (
@@ -54,20 +52,22 @@ function App() {
 						{errorMessage ? (
 							<div className="error">{errorMessage}</div>
 						) : (
-							<div>
-								<div className="info">
-									<h2>Temp: {data.main.temp} °C</h2>
-									<h2>Feels like: {data.main.feels_like} °C</h2>
+							data && (
+								<div>
+									<div className="info">
+										<h2>Temp: {data.main.temp} °C</h2>
+										<h2>Feels like: {data.main.feels_like} °C</h2>
+									</div>
+									<div className="info">
+										<h2>Weather: {data.weather[0].main}</h2>
+										<h2>Humidity: {data.main.humidity}</h2>
+									</div>
+									<div className="info">
+										<h2>Wind Speed: {data.wind.speed}</h2>
+										<h2>Wind Degrees: {data.wind.deg}</h2>
+									</div>
 								</div>
-								<div className="info">
-									<h2>Weather: {data.weather[0].main}</h2>
-									<h2>Humidity: {data.main.humidity}</h2>
-								</div>
-								<div className="info">
-									<h2>Wind Speed: {data.wind.speed}</h2>
-									<h2>Wind Degrees: {data.wind.deg}</h2>
-								</div>
-							</div>
+							)
 						)}
 					</>
 				)}
