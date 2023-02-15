@@ -10,6 +10,14 @@ function App() {
 	const [data, setData] = useState("")
 	const [loading, setLoading] = useState(false)
 	const [errorMessage, setErrorMessage] = useState("")
+
+	const tempConverter = (temp) => {
+		let celsius
+		celsius = Math.round(temp - 273.15)
+
+		return celsius
+	}
+
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		setCityName(e.target[0].value)
@@ -36,13 +44,17 @@ function App() {
 			setLoading(false)
 		}
 		fetchData()
+		console.log(data)
 	}, [cityName])
 
 	return (
 		<div className="App">
 			<div className="card">
 				<form className="info title" onSubmit={handleSubmit}>
-					<input type="text" placeholder="city name" />
+					<input
+						type="text"
+						placeholder={data.name ? data.name : "city name"}
+					/>
 					<button type="submit">Search</button>
 				</form>
 				{loading ? (
@@ -55,8 +67,10 @@ function App() {
 							data && (
 								<div>
 									<div className="info">
-										<h2>Temp: {data.main.temp} °C</h2>
-										<h2>Feels like: {data.main.feels_like} °C</h2>
+										<h2>Temp: {tempConverter(data.main.temp)} °C</h2>
+										<h2>
+											Feels like: {tempConverter(data.main.feels_like)} °C
+										</h2>
 									</div>
 									<div className="info">
 										<h2>Weather: {data.weather[0].main}</h2>
